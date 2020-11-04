@@ -41,10 +41,10 @@ namespace BeanSeans.Controllers
         {
             var reservation = await _db.Reservations
                 .Include(r => r.Person)
-                .Include(r => r.Sitting)
-                .ThenInclude(s => s.SittingType)
-                .Include(r => r.Source)
-                .Include(r => r.Status).ToListAsync();
+                  .Include(r => r.Sitting)
+                     .ThenInclude(s => s.SittingType)
+                      .Include(r => r.Source)
+                          .Include(r => r.Status).ToListAsync();
                 
             return View( reservation);
         }
@@ -209,7 +209,7 @@ namespace BeanSeans.Controllers
             //ViewData["SittingId"] = new SelectList(_db.Sittings, "Id", "Id", reservation.SittingId);
             //ViewData["SourceId"] = new SelectList(_db.ReservationSources, "Id", "Id", reservation.SourceId);
             //ViewData["StatusId"] = new SelectList(_db.ReservationStatuses, "Id", "Id", reservation.StatusId);
-           
+
             return View(reservation);
         }
 
@@ -218,18 +218,15 @@ namespace BeanSeans.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PersonId,SittingId,StatusId,SourceId,Id,Guest,StartTime,Duration,Note")] Reservation reservation)
+        public async Task<IActionResult> Edit(Reservation reservation)
         {
-            if (id != reservation.Id)
-            {
-                return NotFound();
-            }
+            
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    reservation.Id = id;
+                   
                     _db.Update(reservation);
                     await _db.SaveChangesAsync();
                 }

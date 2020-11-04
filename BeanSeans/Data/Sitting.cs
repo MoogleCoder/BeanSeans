@@ -32,7 +32,7 @@ namespace BeanSeans.Data
 
         public int Capacity { get; set; }
 
-
+        
 
 
     }
