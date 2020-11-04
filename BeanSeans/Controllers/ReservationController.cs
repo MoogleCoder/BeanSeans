@@ -28,7 +28,10 @@ namespace BeanSeans.Controllers
         //model: Sitting, List Tep
         public  async Task<IActionResult> Sittings()
         {
-            var sittings = await _db.Sittings.Include(s => s.SittingType).ToListAsync();
+            var sittings = await _db.Sittings
+                                   .Include(s => s.SittingType)
+                                       .OrderBy(s =>s.Start)
+                                        .ToListAsync();
             return View(sittings);
         }
         //after sitting, user will be navigated to tables to choose area and table
@@ -226,6 +229,7 @@ namespace BeanSeans.Controllers
             {
                 try
                 {
+                    reservation.Id = id;
                     _db.Update(reservation);
                     await _db.SaveChangesAsync();
                 }

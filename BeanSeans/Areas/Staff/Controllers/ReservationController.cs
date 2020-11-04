@@ -110,36 +110,39 @@ namespace BeanSeans.Areas.Staff
 
 
         //Person for manager to enter reser_person details(not member)
-        [HttpGet]
-        public async Task<IActionResult> Person()
-        {
+        //[HttpGet]
+        //public async Task<IActionResult> Person()
+        //{
          
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> Person(CreatePerson m)
-        {
-            if (ModelState.IsValid)
-            {
-                //add to Person
-                var person = new Person
-                {
+        //[HttpPost]
+        //public async Task<IActionResult> Person(CreatePerson m)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //add to Person
+        //        var person = new Person
+        //        {
 
-                    FirstName = m.FirstName,
-                    LastName = m.LastName,
-                    Email = m.Email,
-                    Phone = m.Phone
-                };
+        //            FirstName = m.FirstName,
+        //            LastName = m.LastName,
+        //            Email = m.Email,
+        //            Phone = m.Phone
+        //        };
 
-                _db.People.Add(person);
-                await _db.SaveChangesAsync();
-                return RedirectToAction("Create");
+        //        _db.People.Add(person);
+        //        await _db.SaveChangesAsync();
+        //        return RedirectToAction("Create");
 
-            }
+        //    }
 
-            return View();
-        }
+        //    return View();
+        //}
+
+
+
         [HttpGet]//id= selected sitting id
         public async Task<IActionResult> Create(int id)
         {

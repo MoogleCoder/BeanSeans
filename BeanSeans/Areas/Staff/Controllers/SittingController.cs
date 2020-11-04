@@ -81,6 +81,7 @@ namespace BeanSeans.Areas.Administration
             return View(sitting);
         }
 
+        [HttpGet]
         // GET: Administration/Sitting/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

@@ -1,18 +1,21 @@
 ﻿@model IEnumerable<BeanSeans.Data.Sitting>
 
 @{
-    ViewData["Title"] = "Reservation-Select Date";
+    ViewData["Title"] = "Reservation Select Date";
 }
 
-<h1>Please select a data for your reservation</h1>
+<title>Sittings View</title>
+
+<h1 class="display-4"> Please select a date for your reservation</h1>
 
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.SittingType.Name)
+                @Html.DisplayNameFor(model => model.SittingType)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Start)
             </th>
@@ -20,8 +23,6 @@
                 @Html.DisplayNameFor(model => model.End)
             </th>
 
-
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SittingType.Name)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Start)
             </td>
@@ -38,7 +40,7 @@
             </td>
 
             <td>
-                <a asp-action="Create" asp-route-id="@item.Id">Create Reservation</a>
+                <a id="reservationCreate" asp-action="Create" asp-route-id="@item.Id">Create Reservation</a>
             </td>
         </tr>
 }
